@@ -1,0 +1,22 @@
+@use "/src/styles/variables" as *;
+
+nav {
+  display: flex;
+  flex-direction: row;
+}
+a {
+  position: relative;
+  text-decoration: underline 0.15em rgba(255, 255, 255, 0);
+  transition: all 300ms ease-in-out;
+
+  &:hover:not(.active-link) {
+    text-decoration-color: rgba(255, 255, 255, 1);
+  }
+}
+
+// specifics
+.active-link {
+  position: relative;
+  color: $color-text-secondary;
+  text-decoration: underline 0.15em $color-text-secondary;
+}
