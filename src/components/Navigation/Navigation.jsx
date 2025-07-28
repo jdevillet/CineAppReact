@@ -13,7 +13,9 @@ const Navigation = () => {
           <NavLink
             to="/"
             end
-            className={({ isActive }) => (isActive ? "active-link" : undefined)}
+            className={({ isActive }) =>
+              "nav-link " + (isActive ? "active-link" : "")
+            }
           >
             Home
           </NavLink>
@@ -22,7 +24,9 @@ const Navigation = () => {
           <NavLink
             to="/mypicks"
             end
-            className={({ isActive }) => (isActive ? "active-link" : undefined)}
+            className={({ isActive }) =>
+              "nav-link " + (isActive ? "active-link" : "")
+            }
           >
             My Picks
           </NavLink>
