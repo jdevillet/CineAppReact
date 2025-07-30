@@ -1,11 +1,14 @@
 import React from "react";
 import Navigation from "../components/Navigation/Navigation";
+import MyPicksList from "../components/MyPicksList/MyPicksList";
+import Filter from "../components/Filter/Filter";
 
-const MyPicks = () => {
+const MyPicks = ({ picksList, setPicksList }) => {
   return (
     <>
       <Navigation />
-      <h1>My Picks</h1>
+      <Filter />
+      <MyPicksList setPicksList={setPicksList} picksList={picksList} />
     </>
   );
 };

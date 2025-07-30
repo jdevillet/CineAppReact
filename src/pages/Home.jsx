@@ -1,10 +1,11 @@
 import React from "react";
 import Navigation from "../components/Navigation/Navigation";
 import Searchbar from "../components/Searchbar/Searchbar";
-import MovieCards from "../components/MovieCards/MovieCards ";
+import MovieList from "../components/MovieList/MovieList";
 import { useState } from "react";
+import Filter from "../components/Filter/Filter";
 
-const Home = () => {
+const Home = ({ picksList, setPicksList }) => {
   const [query, setQuery] = useState("");
   const [movies, setMovies] = useState([]);
   const [error, setError] = useState(null);
@@ -19,7 +20,12 @@ const Home = () => {
         error={error}
         setError={setError}
       />
-      <MovieCards movies={movies} />
+      <Filter />
+      <MovieList
+        movies={movies}
+        picksList={picksList}
+        setPicksList={setPicksList}
+      />
     </>
   );
 };

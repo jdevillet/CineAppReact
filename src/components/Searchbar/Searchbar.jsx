@@ -1,26 +1,30 @@
 import React from "react";
 import { useEffect } from "react";
-import api from "../../services/api";
+import api, { getPopularMovies } from "../../services/api";
 
 const Searchbar = ({ query, setQuery, setMovies, error, setError }) => {
   useEffect(() => {
-    if (!query) {
-      setMovies([]);
-      return;
-    }
-    const delayDebounce = setTimeout(() => {
-      const fetchMovies = async () => {
-        try {
-          const data = await api(query);
-          setMovies(data.results);
-          setError(null);
-        } catch {
-          setError("Failed to fetch movies");
-          setMovies([]);
+    const fetchMovies = async () => {
+      try {
+        let data;
+
+        if (!query || query.trim() === "") {
+          data = await getPopularMovies();
+        } else {
+          data = await api(query);
         }
-      };
+        setMovies(data.results);
+        setError(null);
+      } catch {
+        setError("Failed to fetch movies");
+        setMovies([]);
+      }
+    };
+
+    const delayDebounce = setTimeout(() => {
       fetchMovies();
     }, 500);
+
     return () => clearTimeout(delayDebounce);
   }, [query, setError, setMovies]);
 
@@ -38,6 +42,3 @@ const Searchbar = ({ query, setQuery, setMovies, error, setError }) => {
 };
 
 export default Searchbar;
-// {movies.length > 0
-//           ? movies.map((movie) => <li key={movie.id}>{movie.title}</li>)
-//           : search && <li>No movies found.</li>}

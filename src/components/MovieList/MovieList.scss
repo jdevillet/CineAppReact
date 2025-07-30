@@ -1,0 +1,15 @@
+@use "/src/styles/variables" as *;
+
+.movie-cards {
+  ul {
+    li {
+      border-radius: $border-radius-sm;
+      background: $color-secondary;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      padding: 10px;
+      margin: 10px;
+    }
+  }
+}
